@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Edificio">
+    <resultMap type="mx.com.app.data.model.edificio.Edificio" id="EdificioMapper">
+        <id column="id" 		property="edificioId"/>
+        <result column="nombre" 	property="nombre"/>
+        <result column="ubicacion_x" 	property="x"/>
+        <result column="ubicacion_y"    property="y"/>
+        <!-- <result column="columna_de_tabla_sql"    property="propiedad_de_clase"/> -->
+    </resultMap>
+    <select id="todosEdificios" resultMap="EdificioMapper">
+        SELECT * FROM edificios
+    </select>
+</mapper>

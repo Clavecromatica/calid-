@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      template="/WEB-INF/template/guest/template.xhtml">
+    <ui:define name="content">    
+        <br />
+        <div>
+            <p:dataTable value="#{controladorEdificio.edificios}" emptyMessage="No se encontraron datos"
+                         var="edificio" rows="5" paginator="true" paginatorPosition="bottom">
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{edificio.nombre}"/>
+                </p:column>             
+                <p:column headerText="Posición x">
+                    <h:outputText value="#{edificio.x}"/>
+                </p:column>
+                <p:column headerText="Posición Y">
+                    <h:outputText value="#{edificio.y}"/>
+                </p:column>
+                <p:column headerText="Editar">
+                    
+                </p:column>
+            </p:dataTable>
+        </div>
+    </ui:define>
+</ui:composition>
+
