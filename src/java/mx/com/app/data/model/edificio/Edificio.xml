@@ -13,4 +13,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <select id="todosEdificios" resultMap="EdificioMapper">
         SELECT * FROM edificios
     </select>
+    <select id="guardarEdificio">
+        INSERT INTO edificios
+            (nombre,
+             ubicacion_x,
+             ubicacion_y)
+        VALUES 
+            (#{edificio_nombre},
+             #{posicion_x},
+             #{posicion_y})
+    </select>
 </mapper>

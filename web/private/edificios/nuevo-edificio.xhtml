@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      template="/WEB-INF/template/guest/template.xhtml">
+    <ui:define name="content">    
+        <h:form id="edificio-form">
+            <br />
+            <div>
+                <h1 class="page-header"><i class="fa fa-building fa-2x"></i>Agregar edificio</h1>
+                <br/>
+                <p:messages id="messages" showDetail="true" closable="true"/>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="col-lg-2 col-md-4 col-sm-12">
+                            <h:outputLabel value="Nombre *" for="id-edificio"/>
+                        </div>
+                        <div class="col-lg-10 col-md-8 col-sm-12">
+                            <p:inputText id="id-edificio" required="true" value="#{controladorNuevoEdificio.edificio.nombre}"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="col-lg-2 col-md-4 col-sm-12">
+                            <h:outputLabel value="Posición X" for="posicion-x"/>
+                        </div>
+                        <div class="col-lg-10 col-md-8 col-sm-12">
+                            <p:inputText id="posicion-x" value="#{controladorNuevoEdificio.edificio.x}"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="col-lg-2 col-md-4 col-sm-12">
+                            <h:outputLabel value="Posición Y" for="posicion-y" />
+                        </div>
+                        <div class="col-lg-10 col-md-8 col-sm-12">
+                            <p:inputText id="posicion-y" value="#{controladorNuevoEdificio.edificio.y}"/><br/>
+                        </div>
+                    </div>
+                    <div>
+                        <p:commandButton value="Guardar" action="#{controladorNuevoEdificio.guardarEdificio()}" update="messages"/>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
+

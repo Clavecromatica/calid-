@@ -1,6 +1,8 @@
 package mx.com.app.data.dao.edificio;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import mx.com.app.data.model.edificio.Edificio;
 import mx.com.app.data.sql.SqlConnectionFactory;
 import org.apache.ibatis.session.SqlSession;
@@ -17,12 +19,29 @@ public class EdificioDAO {
         try{
             sqlSession = SqlConnectionFactory.getSessionFactory().openSession(); //con false para transacción
             edificios = sqlSession.selectList("Edificio.todosEdificios");//NAMESPACE.ID
-            System.out.println(edificios.get(0).getNombre());
             return edificios;
         } catch(Exception e){
             e.printStackTrace();
             throw e;
         } finally{
+            if(sqlSession != null){
+                sqlSession.close();
+            }
+        }
+    }
+    
+    public void guardarEdificio(Edificio edificio) throws Exception{
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("edificio_nombre", edificio.getNombre());
+        param.put("posicion_x", edificio.getX());
+        param.put("posicion_y", edificio.getY());
+        try{
+            sqlSession = SqlConnectionFactory.getSessionFactory().openSession();
+            sqlSession.selectOne("Edificio.guardarEdificio", param);
+        } catch(Exception e){
+            e.printStackTrace();
+            throw e;
+        } finally {
             if(sqlSession != null){
                 sqlSession.close();
             }
