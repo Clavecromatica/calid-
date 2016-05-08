@@ -1,6 +1,8 @@
 package mx.com.app.data.model.edificio;
 
-public class Edificio {
+import java.io.Serializable;
+
+public class Edificio implements Serializable{
     private int edificioId;
     private String nombre;
     private float x;
