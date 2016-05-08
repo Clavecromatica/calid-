@@ -47,4 +47,22 @@ public class EdificioDAO {
             }
         }
     }
+    public void editarEdificio(Edificio edificio) throws Exception{
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("edificio_id", edificio.getEdificioId());
+        param.put("edificio_nombre", edificio.getNombre());
+        param.put("posicion_x", edificio.getX());
+        param.put("posicion_y", edificio.getY());
+        try{
+            sqlSession = SqlConnectionFactory.getSessionFactory().openSession();
+            sqlSession.selectOne("Edificio.editarEdificio", param);
+        } catch(Exception e){
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if(sqlSession != null){
+                sqlSession.close();
+            }
+        }
+    }
 }
