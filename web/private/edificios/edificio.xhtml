@@ -6,24 +6,33 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       template="/WEB-INF/template/guest/template.xhtml">
     <ui:define name="content">    
-        <br />
-        <div>
-            <p:dataTable value="#{controladorEdificio.edificios}" emptyMessage="No se encontraron datos"
-                         var="edificio" rows="5" paginator="true" paginatorPosition="bottom">
-                <p:column headerText="Nombre">
-                    <h:outputText value="#{edificio.nombre}"/>
-                </p:column>             
-                <p:column headerText="Posición x">
-                    <h:outputText value="#{edificio.x}"/>
-                </p:column>
-                <p:column headerText="Posición Y">
-                    <h:outputText value="#{edificio.y}"/>
-                </p:column>
-                <p:column headerText="Editar">
-                    
-                </p:column>
-            </p:dataTable>
-        </div>
+        <h:form id="edificio-form">
+            <br />
+            <div>
+                <h1 class="page-header"><i class="fa fa-building fa-2x"></i>Edificios</h1>
+                <br/>
+                <p:messages id="messages" showDetail="true" closable="true"/>
+                <div class="row">
+                    <p:dataTable value="#{controladorEdificio.edificios}" emptyMessage="No se encontraron datos"
+                         var="edificio" rows="5" paginator="true" paginatorPosition="bottom" 
+                         selectionMode="single" rowKey="#{edificio.edificioId}"
+                         selection="#{controladorEdificio.edificioSeleccionado}">
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{edificio.nombre}"/>
+                        </p:column>             
+                        <p:column headerText="Posición x">
+                            <h:outputText value="#{edificio.x}"/>
+                        </p:column>
+                        <p:column headerText="Posición Y">
+                            <h:outputText value="#{edificio.y}"/>
+                        </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <p:commandButton value="Editar" action="#{controladorEdificio.editarEdificio()}" update="messages"
+                                     styleClass="btn btn-primary fa fa-edit"/>
+                </div>
+            </div>
+        </h:form>
     </ui:define>
 </ui:composition>
 

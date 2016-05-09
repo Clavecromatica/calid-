@@ -9,7 +9,7 @@
         <h:form id="edificio-form">
             <br />
             <div>
-                <h1 class="page-header"><i class="fa fa-building fa-2x"></i>Agregar edificio</h1>
+                <h1 class="page-header"><i class="fa fa-building fa-2x"></i>Editar edificio</h1>
                 <br/>
                 <p:messages id="messages" showDetail="true" closable="true"/>
                 <div class="row">
@@ -18,7 +18,7 @@
                             <h:outputLabel value="Nombre *" for="id-edificio"/>
                         </div>
                         <div class="col-lg-10 col-md-8 col-sm-12">
-                            <p:inputText id="id-edificio" required="true" value="#{controladorNuevoEdificio.edificio.nombre}"/>
+                            <p:inputText id="id-edificio" required="true" value="#{controladorEditarEdificio.edificio.nombre}"/>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -26,7 +26,7 @@
                             <h:outputLabel value="Posición X" for="posicion-x"/>
                         </div>
                         <div class="col-lg-10 col-md-8 col-sm-12">
-                            <p:inputText id="posicion-x" value="#{controladorNuevoEdificio.edificio.x}"/>
+                            <p:inputText id="posicion-x" value="#{controladorEditarEdificio.edificio.x}"/>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -34,11 +34,11 @@
                             <h:outputLabel value="Posición Y" for="posicion-y" />
                         </div>
                         <div class="col-lg-10 col-md-8 col-sm-12">
-                            <p:inputText id="posicion-y" value="#{controladorNuevoEdificio.edificio.y}"/><br/>
+                            <p:inputText id="posicion-y" value="#{controladorEditarEdificio.edificio.y}"/><br/>
                         </div>
                     </div>
                     <div>
-                        <p:commandButton value="Guardar" action="#{controladorNuevoEdificio.guardarEdificio()}" 
+                        <p:commandButton value="Guardar" action="#{controladorEditarEdificio.guardarCambios()}" 
                                          update="messages" styleClass="btn btn-primary"/>
                     </div>
                 </div>

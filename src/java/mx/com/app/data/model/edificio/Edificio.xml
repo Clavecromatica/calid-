@@ -23,4 +23,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
              #{posicion_x},
              #{posicion_y})
     </select>
+    <select id="editarEdificio">
+        UPDATE edificios
+            SET nombre = #{edificio_nombre},
+                ubicacion_x = #{posicion_x},
+                ubicacion_y = #{posicion_y}
+        WHERE id = #{edificio_id}
+    </select>
 </mapper>
