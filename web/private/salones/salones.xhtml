@@ -1,0 +1,44 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./../../WEB-INF/template/guest/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h:form>
+            <div>
+                <h1 class="page-header">
+                    <i class="fa fa-university" aria-hidden="true"></i> Salones
+                </h1>
+                <p:messages id="messages" showDetail="true" closable="true" />
+                <div class="row">
+                    <p:dataTable id="tblSalones" value="#{listarSalonesController.salones}" emptyMessage="No se encontraron datos"
+                                 var="salon" rows="5" paginator="true" paginatorPosition="bottom" 
+                                 selectionMode="single" rowKey="#{salon.salonID}"
+                                 selection="#{listarSalonesController.salonSeleccionado}">
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{salon.nombre}"/>
+                        </p:column>  
+                        <p:column headerText="Capacidad">
+                            <h:outputText value="#{salon.capacidad}"/>
+                        </p:column>             
+                        <p:column headerText="Edificio">
+                            <h:outputText value="#{salon.edificio.nombre}"/>
+                        </p:column>
+                        <p:column headerText="Tipo">
+                            <h:outputText value="#{salon.tipoSalon}"/>
+                        </p:column>
+                    </p:dataTable>
+                    <div class="text-center">
+                        <p:commandButton value="Editar" action="#{listarSalonesController.editarSalones()}" update="messages"
+                                         styleClass="btn btn-primary fa fa-edit"/>
+                        <p:commandButton value="Eliminar" ajax="true" action="#{listarSalonesController.eliminarSalon()}" update="tblSalones"
+                                         styleClass="btn btn-primary fa fa-trash"/>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

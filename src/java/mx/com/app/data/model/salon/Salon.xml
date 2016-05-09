@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<mapper namespace="Salon">
+    <resultMap type="mx.com.app.data.model.salon.Salon" id="SalonMapper">
+        <id column="id"                     property="salonID" />
+        <result column="capacidad"          property="capacidad" />
+        <result column="nombre"             property="nombre" />
+        <result column="tipo_salon_id"      property="tipoSalon" />
+        <association property="edificio"    resultMap="Edificio.EdificioMapper" />
+    </resultMap>
+    
+    <select id="todosSalones" resultMap="SalonMapper">
+        SELECT * FROM salones
+    </select>
+    <select id="guardarSalon">
+        INSERT INTO salones
+            (
+            nombre,
+            capacidad,
+            tipo_salon_id,
+            edificio_id)
+        VALUES 
+            ( #{nombre},
+            #{capacidad},
+             #{tipo_salon},
+             #{edificio_id})
+    </select>
+    
+    <select id="editarSalon">
+        UPDATE salones
+            SET capacidad = #{capacidad},
+                tipo_salon_id = #{tipo_salon},
+                edificio_id = #{edificio_id},
+                nombre = #{nombre}
+        WHERE id = #{salon_id}
+    </select>
+    
+    <select id="eliminarSalon">
+        DELETE FROM salones WHERE id = #{salon_id}
+    </select>
+</mapper>

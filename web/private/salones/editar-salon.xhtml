@@ -1,0 +1,51 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../WEB-INF/template/guest/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form class="form-horizontal">
+            <h1 class="page-header">
+                <i class="fa fa-university" aria-hidden="true"></i> Editar salón
+            </h1>
+            <p:messages id="messages" showDetail="true" closable="true" />
+
+            <div class="form-group">
+                <h:outputLabel value="Nombre *" for="nombre" class="col-sm-2" />
+                <p:inputText id="nombre" required="true" value="#{editarSalonController.salon.nombre}"
+                              class="col-sm-10"/>
+            </div>
+
+            <div class="form-group">
+                <h:outputLabel value="Capacidad *" for="id-salon" class="col-sm-2" />
+                <p:inputText id="id-salon" required="true" value="#{editarSalonController.salon.capacidad}"
+                              class="col-sm-10"/>
+            </div>
+
+
+            <div class="form-group">
+                <h:outputLabel value="Edificio" for="edificio-salon" class="col-sm-2" />
+                <p:selectOneMenu id="edificio-salon" value="#{editarSalonController.salon.edificio.edificioId}"
+                                  class="col-sm-10"> 
+                    <f:selectItems value="#{nuevoSalonController.edificios}"  />
+                </p:selectOneMenu>
+            </div>
+
+            <div class="form-group">
+                <h:outputLabel value="Tipo salón" for="tipo-salon" class="col-sm-2" />
+                <p:selectOneMenu id="tipo-salon" value="#{editarSalonController.salon.tipoSalon}" >
+                    <f:selectItems value="#{nuevoSalonController.tiposSalon}" class="col-sm-10" /> 
+                </p:selectOneMenu>
+            </div>
+
+            <div class="form-group text-center">
+                <p:commandButton value="Guardar" action="#{editarSalonController.guardarCambios()}" 
+                                 update="messages" styleClass="btn btn-primary "/>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
