@@ -21,15 +21,15 @@
                             <h:outputLabel value="Nombre *" for="nombre"/>
                         </div>
                         <div class="col-lg-10 col-md-8 col-sm-12">
-                            <p:inputText id="nombre" required="true" value="#{nuevoSalonController.salon.nombre}"/>
+                            <p:inputText id="nombre" required="true" value="#{nuevoSalonController.salon.nombre}" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-lg-2 col-md-4 col-sm-12">
-                            <h:outputLabel value="Capacidad *" for="id-salon"/>
+                            <h:outputLabel value="Capacidad *" for="capacidad-salon"/>
                         </div>
                         <div class="col-lg-10 col-md-8 col-sm-12">
-                            <p:inputText id="id-salon" required="true" value="#{nuevoSalonController.salon.capacidad}"/>
+                            <p:inputText id="capacidad-salon" required="true" value="#{nuevoSalonController.salon.capacidad}" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -37,7 +37,7 @@
                             <h:outputLabel value="Edificio" for="edificio-salon"/>
                         </div>
                         <div class="col-lg-10 col-md-8 col-sm-12">
-                            <p:selectOneMenu id="edificio-salon" value="#{nuevoSalonController.salon.edificio.edificioId}">
+                            <p:selectOneMenu id="edificio-salon" value="#{nuevoSalonController.salon.edificio.edificioId}" required="true">
                                 <f:selectItems value="#{nuevoSalonController.edificios}"  />
                             </p:selectOneMenu>
                         </div>
@@ -47,14 +47,14 @@
                             <h:outputLabel value="Tipo salón" for="tipo-salon" />
                         </div>
                         <div class="col-lg-10 col-md-8 col-sm-12">
-                            <p:selectOneMenu id="tipo-salon" value="#{nuevoSalonController.salon.tipoSalon}">
+                            <p:selectOneMenu id="tipo-salon" value="#{nuevoSalonController.salon.tipoSalon}" required="true">
                                 <f:selectItems value="#{nuevoSalonController.tiposSalon}" /> 
                             </p:selectOneMenu>
                         </div>
                     </div>
                     <div class="text-center">
-                        <p:commandButton value="Guardar" action="#{nuevoSalonController.guardarSalon()}" 
-                                         update="messages" styleClass="btn btn-primary"/>
+                        <p:commandButton value="Guardar" action="#{nuevoSalonController.guardarSalon()}" icon="fa fa-save"
+                                         update="messages, tipo-salon, edificio-salon, capacidad-salon, nombre " styleClass="btn btn-primary"/>
                     </div>
                 </h:form>
             </ui:define>
