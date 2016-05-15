@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://localhost:3306/servicios"/>
                 <property name="username" value="root"/>
-                <property name="password" value="root2015"/>
+                <property name="password" value=""/>
                 <property name="poolMaximumActiveConnections" value="25"/>
             </dataSource>
         </environment>
@@ -21,5 +21,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <mappers>
         <mapper resource="mx/com/app/data/model/edificio/Edificio.xml"/>
         <mapper resource="mx/com/app/data/model/salon/Salon.xml"/>
+        <mapper resource="mx/com/app/data/model/Puesto/Puesto.xml"/>
     </mappers>
 </configuration>

@@ -65,4 +65,20 @@ public class EdificioDAO {
             }
         }
     }
+    
+    public void eliminarEdificio(Edificio edificio) throws Exception{
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("edificio_id", edificio.getEdificioId());
+        try{
+            sqlSession = SqlConnectionFactory.getSessionFactory().openSession();
+            sqlSession.selectOne("Edificio.eliminarEdificio", param);
+        } catch(Exception e){
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if(sqlSession != null){
+                sqlSession.close();
+            }
+        }
+    }
 }

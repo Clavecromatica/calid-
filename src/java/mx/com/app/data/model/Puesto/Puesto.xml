@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Puesto">
+    <resultMap type="mx.com.app.data.model.Puesto.Puesto" id="PuestoMapper">
+        <result column="puesto_id" property="id"/>
+        <result column="puesto_nombre" property="nombre"/>
+        <!-- <result column="columna_de_tabla_sql"    property="propiedad_de_clase"/> -->
+    </resultMap>
+    <select id="todosPuestos" resultMap="PuestoMapper">
+        SELECT id AS puesto_id,
+               nombre AS puesto_nombre
+        FROM puestos
+    </select>
+    <select id="guardarPuesto">
+        INSERT INTO puestos
+            (nombre)
+        VALUES 
+            (#{puesto_nombre})
+    </select>
+    <select id="editarPuesto">
+        UPDATE puestos
+            SET nombre = #{puesto_nombre}
+        WHERE id = #{puesto_id}
+    </select>
+    <select id="eliminarPuesto">
+        DELETE FROM puestos
+        WHERE id = #{puesto_id}
+    </select>
+</mapper>

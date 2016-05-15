@@ -25,11 +25,15 @@ public class ControladorEdificio implements Serializable{
         }
         return edificios;
     }
-
     public void setEdificios(List<Edificio> edificios) {
         this.edificios = edificios;
     }
-    
+        public Edificio getEdificioSeleccionado() {
+        return edificioSeleccionado;
+    }
+    public void setEdificioSeleccionado(Edificio edificioSeleccionado) {
+        this.edificioSeleccionado = edificioSeleccionado;
+    }
     public String editarEdificio(){
         if(getEdificioSeleccionado() == null){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atención", "Selecciona un edificio para continuar"));
@@ -39,12 +43,18 @@ public class ControladorEdificio implements Serializable{
         flash.put("edificioAEditar", getEdificioSeleccionado());
         return "/private/edificios/editar-edificio.xhtml";
     }
-
-    public Edificio getEdificioSeleccionado() {
-        return edificioSeleccionado;
-    }
-
-    public void setEdificioSeleccionado(Edificio edificioSeleccionado) {
-        this.edificioSeleccionado = edificioSeleccionado;
+    public void eliminarEdificio(){
+        if(getEdificioSeleccionado() == null){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atención", "Selecciona un edificio para continuar"));
+            return;
+        }
+        EdificioDAO eDAO = new EdificioDAO();
+        try{
+            eDAO.eliminarEdificio(edificioSeleccionado);
+            edificios = null;
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "El edificio se eliminó correctamente"));
+        } catch(Exception e){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Error al intentar eliminar el edificio, intenta más tarde")); 
+        }
     }
 }
